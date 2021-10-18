@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../jquery/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<!-- 아작스 호출할 html -->
+
+	<form action='' id=mailFrm' onsubmit='return mailSubmit()'>
+	 <!--  return  + 메소드하면 false값이 넘어오면 페이지 이동을 하지않는다.  -->
+		<div>
+			<label for='title'>제목:</label>
+			<input type='text' name='title' value='테스트'>
+		</div>
+		<div>
+			<label for='content'>내용:</label>
+			<textarea name='content' cols='30' rows='10'></textarea>
+		</div>
+		<div>
+			<input type='submit' value='메일보내기'>
+			<input type='reset' value='다시작성'>
+		</div>
+	</form>
+	
+	<script>
+		//아작스 호출 function
+		function mailSubmit() {
+			//event.preventDefault();
+			
+			$.ajax({
+				
+				url: '../MailSendServlet',
+				//data: {title: $('input[type="text"]').val(), content: $('textarea[name="content"]').val() }, //serialize
+				data:  $('#mailfrm').serialize(), //
+				dataType: 'json',
+				success: function(result) {
+					console.log(result);
+				},
+				error: function(reject) {
+					console.log(reject);
+				}
+				
+			});
+			
+			
+			return false;
+		}
+	</script>
+</body>
+</html>

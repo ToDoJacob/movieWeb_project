@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="author" content="Script Tutorials" />
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+	<!-- Goggle Font -->
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+
+	<!-- Font Css -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Animation Css -->
+	<link rel="stylesheet" href="css/animate.css">
+
+	<!-- add styles -->
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+	<title>Whirling dropdown menu | Script Tutorials</title>
+
+	<script src="js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="container" id="main" role="main">
+			<div>
+				<a href="login.html"><img id="logo" src="images/logo.jpg"></a>
+			</div>
+			<ul class="menu">
+				<li><a href="javascript:void(0);" onclick="listUpAll()">Genre</a>
+					<ul class="submenu">
+						<li><a href="javascript:void(0);" onclick="division('action')">Action</a></li>
+						<li><a href="javascript:void(0);" onclick="division('animation')">Animation</a></li>
+						<li><a href="javascript:void(0);" onclick="division('romance')">Romance</a></li>
+					</ul>
+				</li>
+				<li id="login"><a href="login.html">Log Out</a></li>
+				
+			</ul>
+		</div>
+	</header>
+
+	
+
+	<section class="portfolio">
+		<div class="container">
+			<div class="row">
+			</div>
+		</div>
+	</section>
+
+	
+	<section class="call-top-action text-center">
+		<div class="container">
+			<div>
+				<div class="col-md-12">
+					<h1>many variations of passages</h1>
+					<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+						alteration
+						<br />
+						in some form, by injected humour, or randomised words which don't look even slightly believable
+					</p>
+					<span>LOREM IPSUM</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<ul class="in-line">
+			<li><a href="https://www.facebook.com/"><span><i class="fa fa-facebook"></i></span></a></li>
+			<li><a href="https://www.twitter.com/"><span><i class="fa fa-twitter"></i></span></a></li>
+			<li><a href="https://www.youtube.com/"><span><i class="fa fa-youtube"></i></span></a></li>
+		</ul>
+		<span class="copyright">&#169; Untitled . All rights reserved. Create By <a
+				href="https://blog.naver.com/sov02">Donggwan & Eunjin</a></span>
+	</footer>
+
+
+	<script>
+		let movieAry = [];
+
+		function makeMovieDiv(movie) {
+
+			let innerDiv = document.createElement('div');
+			innerDiv.setAttribute('id', movie.genre)
+
+			let aTag = document.createElement('a');
+			aTag.setAttribute('href', 'movieDetail.jsp?movieId=' + movie.movie_id);
+
+			let img = document.createElement('img');
+			img.setAttribute('src', './images/' + movie.genre + '/' + movie.poster);
+
+			aTag.appendChild(img);
+			innerDiv.appendChild(aTag);
+
+			return innerDiv;
+		}
+
+		function listUpAll() {
+			let list = document.querySelector('section.portfolio>div>div');
+			$(list).empty();
+			for(let movie of movieAry) {
+				list.appendChild(makeMovieDiv(movie));
+			}
+		}
+		
+		function division(genre) {
+			let list = document.querySelector('section.portfolio>div>div');
+			$(list).empty();
+			for (movie of movieAry) {
+				if (movie.genre == genre) {
+					list.appendChild(makeMovieDiv(movie));
+				}
+			}
+		}
+
+		//아작스 호출
+		let xhtp = new XMLHttpRequest();
+		xhtp.open('get', '../MovieServlet');
+		xhtp.send();
+		xhtp.onload = function () {
+			let movies = xhtp.responseText
+			let list = document.querySelector('section.portfolio>div>div');	
+			movieAry = [];
+			for(let movie of movies) {
+				list.appendChild(makeMovieDiv(movie));
+				movieAry.push(movie);
+			}
+			 
+		}
+	</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+/*
+	Rocket Internet by TEMPLATE STOCK
+    templatestock.co @templatestock
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+*/
+
+/* Typography CSS */
+body
+{
+    font-family: 'Lato', sans-serif;
+    color: #41484b;
+    background-color: black;
+}
+
+/* Portfolio */
+
+.portfolio img
+{
+    width: 250px;
+    height: 400px;
+    cursor: pointer;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.portfolio .last-img
+{
+    margin-bottom: 20px;
+}
+
+/* Call to Action */
+.call-top-action
+{
+    background-color: #42484c;
+    color: #fff;
+    padding: 50px 0px;
+    margin-top: 50px;
+}
+
+.call-top-action h1
+{
+    font-size: 35px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    margin: 0px;
+}
+
+.call-top-action p
+{
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.call-top-action span
+{
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Footer */
+footer
+{
+    text-align: center;
+    margin-top: 30px;
+}
+
+footer ul
+{
+    padding: 0px;
+    list-style: none;
+    margin: 20px;
+}
+
+footer ul li
+{
+    display: inline-block;
+    margin-left: 15px;
+}
+
+footer ul li a span
+{
+    width: 50px;
+    height: 50px;
+    background: #42484C;
+    display: block;
+    font-size: 30px;
+    line-height: 50px;
+    color: #fff;
+    border-radius: 50%;
+}
+
+footer .copyright
+{
+    font-size: 22px;
+    margin-bottom: 20px;
+    display: block;
+}
+
